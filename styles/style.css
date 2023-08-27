@@ -9,13 +9,18 @@ html {
 }
 
 .page {
-  inline-size: 1200px;
-  block-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*align-items: flex-start; /*для тестирования pixel perfect*/
+  /*padding-top: 133px; /*замениь на центр по вертикали*/
   margin: auto;
   color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  inline-size: 1200px;
+  block-size: 100%;
 }
 
 h1,
@@ -35,4 +40,280 @@ fieldset {
 ul,
 ol {
   list-style: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+} 
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+  border: 1px solid #FFF;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 18px;
+  font-style: normal;
+  line-height: normal;
+  text-align: center;
+  background-color: inherit;
+}
+
+.button:active {
+  background-color: #545050;
+}
+
+.button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #FFF;
+  outline-offset: 2px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 711px calc(399px + 2 * 3px); /*величен размер content__details на два горизоналдьных паддинга в content__list для корректного отображения рамки у кнопки more-button */
+  justify-items: stretch;
+  align-items: end;
+  gap: 27px; /*30px в макете, но 3px ушли в стартовый горизотальный паддинг у эелментов второй колонки*/
+  /*background-color: pink; /*тест*/
+}
+
+.result {
+  padding-block-end: 3px;
+}
+
+.result__video-container {
+  position: relative;
+  margin-block-end: 16px;
+  block-size: 386px;
+}
+
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.search-form {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: 40px;
+  block-size: 54px;
+}
+
+.search-form__fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  border: none;
+}
+
+.search-form__fieldset-title {
+  font-weight: 400;
+  font-size: 18px;
+  font-style: normal;
+  line-height: normal;
+}
+
+.search-form__label {
+  display: flex;
+  flex-direction: row;
+  /*width: fit-content;*/
+  cursor: pointer;
+}
+
+.search-form__label:focus-within { /* :has(:focus-visible) не работает в firefox */
+  outline: 1px solid #FFF;
+  outline-offset: 2px;
+}
+
+.search-form__textfield {
+  border-inline: none;
+  border-block: 1px solid #FFF;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.70);
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 18px;
+  font-style: normal;
+  line-height: normal;
+  background-color: inherit;
+  appearance: none;
+  inline-size: 225px;
+  block-size: 27px;
+}
+
+.search-form__textfield::placeholder {
+  color: rgba(255, 255, 255, 0.70);
+}
+
+.search-form__textfield:active {
+  outline: 1px solid #FFF;
+  outline-offset: 0; 
+  /*по макету не рисуется дополнительная рамка, а дорисовывается основная по всем сторонам. 
+  чтобы текст не скакал внутри, сделано не через border, а через outline*/ 
+}
+
+.search-form__textfield:hover {
+  cursor: text;
+}
+
+.search-form__textfield:focus {
+  outline: none;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  inline-size: 212px;
+}
+
+.search-form__pseudo-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline-end: 5px;
+  border: 1px solid #fff;
+  inline-size: 19px;
+  block-size: 19px;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
+  content: '';
+  background-color: #fff;
+  inline-size: 15px;
+  block-size: 15px;
+}
+
+.search-form__label:hover .search-form__pseudo-checkbox + .search-form__label-text {
+  text-decoration: underline;
+}
+
+.search-form__submit-button {
+  align-self: flex-end;
+  inline-size: 194px;
+}
+
+.content__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 26px;
+  height: 100%;
+  block-size: 100%;
+}
+
+.title {
+  padding-inline: 3px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 75px;
+  font-style: normal;
+  line-height: 94%;
+  text-transform: uppercase;
+}
+
+.content__accent {
+  color: #545050;
+}
+
+.content__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-inline: 3px;
+  padding-block-start: 1px;
+  padding-block-end: 3px;
+  overflow: auto;
+  block-size: 300px;
+}
+
+.content__card-link {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding-block: 2px;
+  padding-inline-start: 2px;
+  padding-inline-end: 0;
+}
+
+.content__card-link_current {
+  background: #545050;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.content__card-link:active {
+  background: #545050;
+}
+
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #FFF;
+  outline-offset: 0;
+}
+
+.content__video-card {
+  display: grid;
+  grid-template-columns: 200px 1fr ;
+  justify-items: stretch;
+  align-items: start;
+}
+
+.content__video-card-thumbnail {
+  width: 100%;
+  height: 103px;
+  object-fit: cover;
+}
+
+.content__video-card-description-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.content__video-card-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  font-style: normal;
+  line-height: 100%; /* 30px */
+  text-transform: uppercase;
+}
+
+.content__video-card-description {
+  font-weight: 400;
+  font-style: normal;
+  line-height: 90%; /* 16.2px 90% */
+}
+
+.more-button {
+  inline-size: 100%;
 }
