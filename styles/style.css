@@ -44,7 +44,7 @@ ol {
 
 .visually-hidden {
   position: absolute;
-  overflow: auto; /*ком. рев.: Значение auto будет более лучшим решением, на случай если кол-во карточек будет меньше чем высота обёртки*/
+  overflow: none; 
   clip: rect(0 0 0 0);
   inline-size: 1px;
   block-size: 1px;
@@ -56,7 +56,7 @@ ol {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 34px;
+  block-size: 34px;
   border: 1px solid #FFF;
   color: #fff;
   font-family: inherit;
@@ -88,7 +88,9 @@ ol {
 
 .content {
   display: grid;
-  grid-template-columns: 711px calc(399px + 2 * 3px); /*увеличен размер content__details на два горизоналдьных паддинга в content__list для корректного отображения рамки у кнопки more-button */
+  grid-template-columns: calc(711px + 3px) calc(399px + 2 * 3px); 
+  /*увеличен размер content__details на два горизоналдьных паддинга в content__list (для корректного отображения 
+  рамки у кнопки more-button) и на один стартовый паддинг у result для симметрии*/
   justify-items: stretch;
   align-items: end;
   gap: 27px; /*30px в макете, но 3px ушли в стартовый горизотальный паддинг у эелментов второй колонки*/
@@ -96,6 +98,7 @@ ol {
 }
 
 .result {
+  padding-inline-start: 3px;
   padding-block-end: 3px;
 }
 
@@ -224,7 +227,7 @@ ol {
   flex-direction: column;
   justify-content: flex-end;
   gap: 26px;
-  height: 100%;
+  inline-size: 100%;
   block-size: 100%;
 }
 
